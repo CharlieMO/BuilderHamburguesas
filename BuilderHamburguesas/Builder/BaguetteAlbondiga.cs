@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace BuilderHamburguesas.Builder
 {
-    public class QuesosBurger : HamburguesaBuilder
+    public class BaguetteAlbondiga : BaguetteBuilder
     {
-        public QuesosBurger(CarneEnum carne, PanEnum pan)
+        public BaguetteAlbondiga(CarneEnum carne, PanEnum pan)
         {
-            _hamburguesa = new Hamburguesa
+            _baguette = new Baguette
             {
                 Carne = carne,
                 Pan = pan,
-                Nombre = "QuesosBurger",
-                Foto = "https://i.ytimg.com/vi/2a9gxcKVNyI/maxresdefault.jpg",
-                Costo = 45.50,
+                Nombre = "BaguetteAlbondiga",
+                Foto = "https://cdn2.cocinadelirante.com/sites/default/files/styles/gallerie/public/images/2017/06/baguettedealbondigas.jpg",
+                Costo = 50.50,
                 Ingredientes = new List<string>()
             };
         }
@@ -33,13 +33,12 @@ namespace BuilderHamburguesas.Builder
         }
         public override void AñadirSalsa()
         {
-            _hamburguesa.Ingredientes.Add("Salsa Bufalo");
-            _hamburguesa.Costo += 7.50;
+            _baguette.Ingredientes.Add("Salsa de albóndiga");
+            _baguette.Costo += 2.50;
         }
         public override void AñadirPapas()
         {
-            _hamburguesa.Papas = true;
-            _hamburguesa.Costo += 25.50;
+            _baguette.Papas = true;
         }
         public override void AñadirCatsup()
         {

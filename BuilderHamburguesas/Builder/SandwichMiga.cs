@@ -7,39 +7,43 @@ using System.Threading.Tasks;
 
 namespace BuilderHamburguesas.Builder
 {
-    public class QuesosBurger : HamburguesaBuilder
+    public class SandwichMiga : SandwichBuilder
     {
-        public QuesosBurger(CarneEnum carne, PanEnum pan)
+        public SandwichMiga(CarneEnum carne, PanEnum pan)
         {
-            _hamburguesa = new Hamburguesa
+            _sandwich = new Sandwich
             {
                 Carne = carne,
                 Pan = pan,
-                Nombre = "QuesosBurger",
-                Foto = "https://i.ytimg.com/vi/2a9gxcKVNyI/maxresdefault.jpg",
-                Costo = 45.50,
+                Nombre = "SandwichMiga",
+                Foto = "https://placeralplato.com/files/2015/05/Receta-de-sndwiches-de-miga.jpg",
+                Costo = 42.50,
                 Ingredientes = new List<string>()
             };
         }
 
         public override void AñadirLechuga()
         {
+            _sandwich.Ingredientes.Add("Lecucha miga");
+            _sandwich.Costo += 2.50;
         }
         public override void AñadirQueso()
         {
+            _sandwich.Ingredientes.Add("Queso de miga");
+            _sandwich.Costo += 2.50;
         }
         public override void AñadirJitomate()
         {
+            _sandwich.Ingredientes.Add("Jitomate miga");
+            _sandwich.Costo += 2.50;
         }
         public override void AñadirSalsa()
         {
-            _hamburguesa.Ingredientes.Add("Salsa Bufalo");
-            _hamburguesa.Costo += 7.50;
         }
         public override void AñadirPapas()
         {
-            _hamburguesa.Papas = true;
-            _hamburguesa.Costo += 25.50;
+            _sandwich.Papas = true;
+            _sandwich.Costo += 10.00;
         }
         public override void AñadirCatsup()
         {

@@ -7,39 +7,44 @@ using System.Threading.Tasks;
 
 namespace BuilderHamburguesas.Builder
 {
-    public class QuesosBurger : HamburguesaBuilder
+    public class BaguetteSubway : BaguetteBuilder
     {
-        public QuesosBurger(CarneEnum carne, PanEnum pan)
+        public BaguetteSubway(CarneEnum carne, PanEnum pan)
         {
-            _hamburguesa = new Hamburguesa
+            _baguette = new Baguette
             {
                 Carne = carne,
                 Pan = pan,
-                Nombre = "QuesosBurger",
-                Foto = "https://i.ytimg.com/vi/2a9gxcKVNyI/maxresdefault.jpg",
-                Costo = 45.50,
+                Nombre = "Subway",
+                Foto = "https://www.maritimefun.com/marinerscove/wp-content/uploads/sites/7/2019/05/Subway.-Sandwich.jpg",
+                Costo = 50.00,
                 Ingredientes = new List<string>()
             };
         }
 
         public override void AñadirLechuga()
         {
+            _baguette.Ingredientes.Add("Lechuga Subway");
+            _baguette.Costo += 2.50;
         }
         public override void AñadirQueso()
         {
+            _baguette.Ingredientes.Add("Queso Subway");
+            _baguette.Costo += 2.50;
         }
         public override void AñadirJitomate()
         {
+            _baguette.Ingredientes.Add("Jitomate Subway");
+            _baguette.Costo += 2.50;
         }
         public override void AñadirSalsa()
         {
-            _hamburguesa.Ingredientes.Add("Salsa Bufalo");
-            _hamburguesa.Costo += 7.50;
+            _baguette.Ingredientes.Add("Salsa de Subway");
+            _baguette.Costo += 2.50;
         }
         public override void AñadirPapas()
         {
-            _hamburguesa.Papas = true;
-            _hamburguesa.Costo += 25.50;
+            _baguette.Papas = true;
         }
         public override void AñadirCatsup()
         {

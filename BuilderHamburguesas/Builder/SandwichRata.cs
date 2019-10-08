@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace BuilderHamburguesas.Builder
 {
-    public class QuesosBurger : HamburguesaBuilder
+    public class SandwichRata: SandwichBuilder
     {
-        public QuesosBurger(CarneEnum carne, PanEnum pan)
+        public SandwichRata(CarneEnum carne, PanEnum pan)
         {
-            _hamburguesa = new Hamburguesa
+            _sandwich = new Sandwich
             {
                 Carne = carne,
                 Pan = pan,
-                Nombre = "QuesosBurger",
-                Foto = "https://i.ytimg.com/vi/2a9gxcKVNyI/maxresdefault.jpg",
-                Costo = 45.50,
+                Nombre = "SandwichRata",
+                Foto = "https://image.tmdb.org/t/p/w780/Aas5fA8NN5vGyFaUNpxLnZ1Ozkc.jpg",
+                Costo = 20.00,
                 Ingredientes = new List<string>()
             };
         }
@@ -33,13 +33,11 @@ namespace BuilderHamburguesas.Builder
         }
         public override void AñadirSalsa()
         {
-            _hamburguesa.Ingredientes.Add("Salsa Bufalo");
-            _hamburguesa.Costo += 7.50;
         }
         public override void AñadirPapas()
         {
-            _hamburguesa.Papas = true;
-            _hamburguesa.Costo += 25.50;
+            _sandwich.Papas = true;
+            _sandwich.Costo += 15.00;
         }
         public override void AñadirCatsup()
         {

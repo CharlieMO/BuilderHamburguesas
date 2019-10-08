@@ -7,39 +7,41 @@ using System.Threading.Tasks;
 
 namespace BuilderHamburguesas.Builder
 {
-    public class QuesosBurger : HamburguesaBuilder
+    public class SandwichTernera : SandwichBuilder
     {
-        public QuesosBurger(CarneEnum carne, PanEnum pan)
+        public SandwichTernera(CarneEnum carne, PanEnum pan)
         {
-            _hamburguesa = new Hamburguesa
+            _sandwich = new Sandwich
             {
                 Carne = carne,
                 Pan = pan,
-                Nombre = "QuesosBurger",
-                Foto = "https://i.ytimg.com/vi/2a9gxcKVNyI/maxresdefault.jpg",
-                Costo = 45.50,
+                Nombre = "SandwichTernera",
+                Foto = "https://t2.rg.ltmcdn.com/es/images/8/7/4/img_sandwich_de_ternera_y_queso_57478_600_square.jpg",
+                Costo = 33.50,
                 Ingredientes = new List<string>()
             };
         }
 
         public override void AñadirLechuga()
         {
+            _sandwich.Ingredientes.Add("Lecucha de rancho");
+            _sandwich.Costo += 2.50;
         }
         public override void AñadirQueso()
         {
         }
         public override void AñadirJitomate()
         {
+            _sandwich.Ingredientes.Add("Jitomate de rancho");
+            _sandwich.Costo += 2.50;
         }
         public override void AñadirSalsa()
         {
-            _hamburguesa.Ingredientes.Add("Salsa Bufalo");
-            _hamburguesa.Costo += 7.50;
         }
         public override void AñadirPapas()
         {
-            _hamburguesa.Papas = true;
-            _hamburguesa.Costo += 25.50;
+            _sandwich.Papas = true;
+            _sandwich.Costo += 10.00;
         }
         public override void AñadirCatsup()
         {

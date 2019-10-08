@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace BuilderHamburguesas.Builder
 {
-    public abstract class HamburguesaBuilder : Platillo
+    public abstract class BaguetteBuilder : Platillo
     {
-        protected Hamburguesa _hamburguesa;
+        protected Baguette _baguette;
 
         public string Carne { get; set; }
         public string Pan { get; set; }
-        public Hamburguesa TerminaPizza() { return _hamburguesa; }
+        //public Hamburguesa TerminaPizza() { return _hamburguesa; }
 
         public virtual void AñadirLechuga()
         {
@@ -48,7 +48,7 @@ namespace BuilderHamburguesas.Builder
             AñadirSalsa();
             AñadirPapas();
             AñadirCatsup();
-            return _hamburguesa;
+            return _baguette;
         }
     }
 }

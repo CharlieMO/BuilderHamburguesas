@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BuilderHamburguesas.Models
 {
-    public class Hamburguesa : IComida
+    public class Sandwich : IComida
     {
         public PanEnum Pan { get; set; }
         public double Costo { get; set; }
@@ -16,12 +16,12 @@ namespace BuilderHamburguesas.Models
         public List<string> Ingredientes { get; set; }
         public bool Papas { get; set; }
 
-        public Hamburguesa()
+        public Sandwich()
         {
 
         }
 
-        public Hamburguesa(PanEnum pan, double costo, string nombre, CarneEnum carne, string foto, List<string> ingredientes, bool papas)
+        public Sandwich(PanEnum pan, double costo, string nombre, CarneEnum carne, string foto, List<string> ingredientes, bool papas)
         {
             Pan = pan;
             Costo = costo;
@@ -35,9 +35,9 @@ namespace BuilderHamburguesas.Models
         public override string ToString()
         {
             if (Papas)
-                return $"-Hamburguesa {Nombre}, Pan:  {Pan}, Carne: {Carne}, Ingredientes: {string.Join(", ", Ingredientes)}, Papas: Sí, Costo: ${Costo}";
+                return $"-Sandwich {Nombre}, Pan:  {Pan}, Carne: {Carne}, Ingredientes: {string.Join(", ", Ingredientes)}, Papas: Sí, Costo: ${Costo}";
             else
-                return $"-Hamburguesa {Nombre}, Pan:  {Pan}, Carne: {Carne}, Ingredientes: {string.Join(", ", Ingredientes)}, Papas: No, Costo: ${Costo}";
+                return $"-Sandwich {Nombre}, Pan:  {Pan}, Carne: {Carne}, Ingredientes: {string.Join(", ", Ingredientes)}, Papas: No, Costo: ${Costo}";
         }
     }
 }

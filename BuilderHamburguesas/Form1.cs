@@ -19,8 +19,11 @@ namespace BuilderHamburguesas
         private Chef chef = new Chef();
         private Hamburguesa hamburguesa = null;
         private bool[] pedido = new bool[8];
-        private List<Hamburguesa> lista = new List<Hamburguesa>();
+        //private List<Hamburguesa> lista = new List<Hamburguesa>();
         private double total;
+        Platillo _platillo;
+        private List<IComida> lista = new List<IComida>();
+
         public Form1()
         {
             InitializeComponent();
@@ -51,6 +54,38 @@ namespace BuilderHamburguesas
 
             pictureBox8.Image = BuilderHamburguesas.Properties.Resources.H8;
             pictureBox8.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            pictureBox9.Image = BuilderHamburguesas.Properties.Resources.B1;
+            pictureBox9.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            pictureBox10.Image = BuilderHamburguesas.Properties.Resources.B2;
+            pictureBox10.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            pictureBox11.Image = BuilderHamburguesas.Properties.Resources.B3;
+            pictureBox11.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            pictureBox12.Image = BuilderHamburguesas.Properties.Resources.B4;
+            pictureBox12.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            pictureBox13.Image = BuilderHamburguesas.Properties.Resources.B5;
+            pictureBox13.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            pictureBox14.Image = BuilderHamburguesas.Properties.Resources.S1;
+            pictureBox14.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            pictureBox15.Image = BuilderHamburguesas.Properties.Resources.S2;
+            pictureBox15.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            pictureBox16.Image = BuilderHamburguesas.Properties.Resources.S3;
+            pictureBox16.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            pictureBox17.Image = BuilderHamburguesas.Properties.Resources.S4;
+            pictureBox17.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            pictureBox18.Image = BuilderHamburguesas.Properties.Resources.S5;
+            pictureBox18.SizeMode = PictureBoxSizeMode.StretchImage;
+
+            MessageBox.Show("Click derecho: eliminar platillo. \nClick izquierdo: añadir platillo.");
 
         }
 
@@ -121,35 +156,329 @@ namespace BuilderHamburguesas
             tt.InitialDelay = 500;
         }
 
-        private void PictureBox1_Click(object sender, EventArgs e)
+        private void pictureBox9_MouseHover(object sender, EventArgs e)
         {
-            pedido[0] = !pedido[0];
+            ToolTip tt = new ToolTip();
+            tt.SetToolTip(this.pictureBox9, "Baguette Albóndiga");
+            tt.InitialDelay = 500;
+        }
 
-            if (pedido[0])
+        private void pictureBox10_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip tt = new ToolTip();
+            tt.SetToolTip(this.pictureBox10, "Baguette de Pavo");
+            tt.InitialDelay = 500;
+        }
+
+        private void pictureBox11_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip tt = new ToolTip();
+            tt.SetToolTip(this.pictureBox11, "Baguette de Pulpo");
+            tt.InitialDelay = 500;
+        }
+
+        private void pictureBox12_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip tt = new ToolTip();
+            tt.SetToolTip(this.pictureBox12, "Baguette de Pollo");
+            tt.InitialDelay = 500;
+        }
+
+        private void pictureBox13_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip tt = new ToolTip();
+            tt.SetToolTip(this.pictureBox13, "Subway");
+            tt.InitialDelay = 500;
+        }
+
+        private void pictureBox14_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip tt = new ToolTip();
+            tt.SetToolTip(this.pictureBox14, "Sandwich Rata");
+            tt.InitialDelay = 500;
+        }
+
+        private void pictureBox15_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip tt = new ToolTip();
+            tt.SetToolTip(this.pictureBox15, "Sandwich Milanesa");
+            tt.InitialDelay = 500;
+        }
+
+        private void pictureBox16_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip tt = new ToolTip();
+            tt.SetToolTip(this.pictureBox16, "Sandwich Pulpo");
+            tt.InitialDelay = 500;
+        }
+
+        private void pictureBox17_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip tt = new ToolTip();
+            tt.SetToolTip(this.pictureBox17, "Sandwich de Miga");
+            tt.InitialDelay = 500;
+        }
+
+        private void pictureBox18_MouseHover(object sender, EventArgs e)
+        {
+            ToolTip tt = new ToolTip();
+            tt.SetToolTip(this.pictureBox18, "Sandwich de Ternera");
+            tt.InitialDelay = 500;
+        }
+
+        private void pictureBox_MouseClick(object sender, MouseEventArgs e)
+        {
+            var pic = (sender as PictureBox).Name;//pic is the Name of the PictureBox that is clicked
+            switch (e.Button)
             {
-                hamburguesa = chef.PrepararHamburguesa(new BurgerBurger(CarneEnum.Pollo, PanEnum.Centeno));
-                lista.Add(hamburguesa);
-                total += hamburguesa.Costo;
-            }
-            else
-            {
-                int i = 0;
-                foreach(Hamburguesa h in lista)
+                case MouseButtons.Right:
                 {
-                    if (h.Nombre == "BurgerBurger")
+                    int i = 0;
+                    foreach (IComida h in lista)
                     {
-                        lista.RemoveAt(i);
-                        total -= h.Costo;
+                        if ((sender as PictureBox).Name == "pictureBox5")
+                            {
+                                if(h.Nombre == "SquidBurger")
+                                {
+                                    total -= h.Costo;
+                                    lista.RemoveAt(i);
+                                    break;
+                                }
+                            }
+                        else if ((sender as PictureBox).Name == "pictureBox1")
+                            {
+                                if (h.Nombre == "BurgerBurger")
+                                {
+                                    total -= h.Costo;
+                                    lista.RemoveAt(i);
+                                    break;
+                                }
+                            }
+                            else if ((sender as PictureBox).Name == "pictureBox2")
+                            {
+                                if (h.Nombre == "MexBurger")
+                                {
+                                    total -= h.Costo;
+                                    lista.RemoveAt(i);
+                                    break;
+                                }
+                            }
+                            else if ((sender as PictureBox).Name == "pictureBox3")
+                            {
+                                if (h.Nombre == "QuesosBurger")
+                                {
+                                    total -= h.Costo;
+                                    lista.RemoveAt(i);
+                                    break;
+                                }
+                            }
+                            else if ((sender as PictureBox).Name == "pictureBox4")
+                            {
+                                if (h.Nombre == "HawaiiBurger")
+                                {
+                                    total -= h.Costo;
+                                    lista.RemoveAt(i);
+                                    break;
+                                }
+                            }
+                            else if ((sender as PictureBox).Name == "pictureBox6")
+                            {
+                                if (h.Nombre == "WhiteBurger")
+                                {
+                                    total -= h.Costo;
+                                    lista.RemoveAt(i);
+                                    break;
+                                }
+                            }
+                            else if ((sender as PictureBox).Name == "pictureBox7")
+                            {
+                                if (h.Nombre == "EggBurger")
+                                {
+                                    total -= h.Costo;
+                                    lista.RemoveAt(i);
+                                    break;
+                                }
+                            }
+                            else if ((sender as PictureBox).Name == "pictureBox8")
+                            {
+                                if (h.Nombre == "FancyBurger")
+                                {
+                                    total -= h.Costo;
+                                    lista.RemoveAt(i);
+                                    break;
+                                }
+                            }
+                            else if ((sender as PictureBox).Name == "pictureBox9")
+                            {
+                                if (h.Nombre == "BaguetteAlbondiga")
+                                {
+                                    total -= h.Costo;
+                                    lista.RemoveAt(i);
+                                    break;
+                                }
+                            }
+                            else if ((sender as PictureBox).Name == "pictureBox10")
+                            {
+                                if (h.Nombre == "BaguettePavo")
+                                {
+                                    total -= h.Costo;
+                                    lista.RemoveAt(i);
+                                    break;
+                                }
+                            }
+
+                            else if ((sender as PictureBox).Name == "pictureBox11")
+                            {
+                                if (h.Nombre == "BaguettePulpo")
+                                {
+                                    total -= h.Costo;
+                                    lista.RemoveAt(i);
+                                    break;
+                                }
+                            }
+
+                            else if ((sender as PictureBox).Name == "pictureBox12")
+                            {
+                                if (h.Nombre == "BaguettePollo")
+                                {
+                                    total -= h.Costo;
+                                    lista.RemoveAt(i);
+                                    break;
+                                }
+                            }
+
+                            else if ((sender as PictureBox).Name == "pictureBox13")
+                            {
+                                if (h.Nombre == "Subway")
+                                {
+                                    total -= h.Costo;
+                                    lista.RemoveAt(i);
+                                    break;
+                                }
+                            }
+
+                            else if ((sender as PictureBox).Name == "pictureBox14")
+                            {
+                                if (h.Nombre == "SandwichRata")
+                                {
+                                    total -= h.Costo;
+                                    lista.RemoveAt(i);
+                                    break;
+                                }
+                            }
+
+                            else if ((sender as PictureBox).Name == "pictureBox15")
+                            {
+                                if (h.Nombre == "SandwichMilanesa")
+                                {
+                                    total -= h.Costo;
+                                    lista.RemoveAt(i);
+                                    break;
+                                }
+                            }
+
+                            else if ((sender as PictureBox).Name == "pictureBox16")
+                            {
+                                if (h.Nombre == "SandwichPulpo")
+                                {
+                                    total -= h.Costo;
+                                    lista.RemoveAt(i);
+                                    break;
+                                }
+                            }
+
+                            else if ((sender as PictureBox).Name == "pictureBox17")
+                            {
+                                if (h.Nombre == "SandwichMiga")
+                                {
+                                    total -= h.Costo;
+                                    lista.RemoveAt(i);
+                                    break;
+                                }
+                            }
+
+                            else if ((sender as PictureBox).Name == "pictureBox18")
+                            {
+                                if (h.Nombre == "SandwichTernera")
+                                {
+                                    total -= h.Costo;
+                                    lista.RemoveAt(i);
+                                    break;
+                                }
+                            }
+
+                            i++;
+                        }
+                        updatelista();
+                        break;
+                }
+
+                case MouseButtons.Left:
+                    {
+                        if ((sender as PictureBox).Name == "pictureBox5")
+                            _platillo = new SquidBurger(CarneEnum.Pulpo, PanEnum.Crujiente);
+                            //hamburguesa = chef.PrepararHamburguesa(new SquidBurger(CarneEnum.Pulpo, PanEnum.Crujiente));
+                        else if ((sender as PictureBox).Name == "pictureBox1")
+                            _platillo = new BurgerBurger(CarneEnum.Pollo, PanEnum.Centeno);
+                            //hamburguesa = chef.PrepararHamburguesa(new BurgerBurger(CarneEnum.Pollo, PanEnum.Centeno));
+                        else if ((sender as PictureBox).Name == "pictureBox2")
+                            _platillo = new MexBurger(CarneEnum.Res, PanEnum.Maíz);
+                            //hamburguesa = chef.PrepararHamburguesa(new MexBurger(CarneEnum.Res, PanEnum.Maíz));
+                        else if ((sender as PictureBox).Name == "pictureBox3")
+                            _platillo = new QuesosBurger(CarneEnum.Ternera, PanEnum.Crujiente);
+                            //hamburguesa = chef.PrepararHamburguesa(new QuesosBurger(CarneEnum.Ternera, PanEnum.Crujiente));
+                        else if ((sender as PictureBox).Name == "pictureBox4")
+                            _platillo = new HawaiiBurger(CarneEnum.Puerco, PanEnum.Espalta);
+                            //hamburguesa = chef.PrepararHamburguesa(new HawaiiBurger(CarneEnum.Puerco, PanEnum.Espalta));
+                        else if ((sender as PictureBox).Name == "pictureBox6")
+                            _platillo = new WhiteBurger(CarneEnum.Pollo, PanEnum.Germinado);
+                            //hamburguesa = chef.PrepararHamburguesa(new WhiteBurger(CarneEnum.Pollo, PanEnum.Germinado));
+                        else if ((sender as PictureBox).Name == "pictureBox7")
+                            _platillo = new EggBurger(CarneEnum.Puerco, PanEnum.Espalta);
+                            //hamburguesa = chef.PrepararHamburguesa(new EggBurger(CarneEnum.Puerco, PanEnum.Espalta));
+                        else if ((sender as PictureBox).Name == "pictureBox8")
+                            _platillo = new FancyBurger(CarneEnum.Pavo, PanEnum.Trigo);
+                        //hamburguesa = chef.PrepararHamburguesa(new FancyBurger(CarneEnum.Pavo, PanEnum.Trigo));
+                        else if ((sender as PictureBox).Name == "pictureBox9")
+                            _platillo = new BaguetteAlbondiga(CarneEnum.Res, PanEnum.Trigo);
+                        else if ((sender as PictureBox).Name == "pictureBox10")
+                            _platillo = new BaguettePavo(CarneEnum.Pavo, PanEnum.Crujiente);
+                        else if ((sender as PictureBox).Name == "pictureBox11")
+                            _platillo = new BaguettePulpo(CarneEnum.Pulpo, PanEnum.Germinado);
+                        else if ((sender as PictureBox).Name == "pictureBox12")
+                            _platillo = new BaguettePollo(CarneEnum.Pollo, PanEnum.Espalta);
+                        else if ((sender as PictureBox).Name == "pictureBox13")
+                            _platillo = new BaguetteSubway(CarneEnum.Ternera, PanEnum.Maíz);
+                        else if ((sender as PictureBox).Name == "pictureBox14")
+                            _platillo = new SandwichRata(CarneEnum.Ternera, PanEnum.Trigo);
+                        else if ((sender as PictureBox).Name == "pictureBox15")
+                            _platillo = new SandwichMilanesa(CarneEnum.Res, PanEnum.Espalta);
+                        else if ((sender as PictureBox).Name == "pictureBox16")
+                            _platillo = new SandwichPulpo(CarneEnum.Pulpo, PanEnum.Centeno);
+                        else if ((sender as PictureBox).Name == "pictureBox17")
+                            _platillo = new SandwichMiga(CarneEnum.Oveja, PanEnum.Centeno);
+                        else if ((sender as PictureBox).Name == "pictureBox18")
+                            _platillo = new SandwichTernera(CarneEnum.Ternera, PanEnum.Centeno);
+
+                        //lista.Add(hamburguesa);
+                        //total += hamburguesa.Costo;
+
+                        IComida comida = _platillo.PrepararPlatillo();
+                        lista.Add(comida);
+                        total += comida.Costo;
+
+                        updatelista();
                         break;
                     }
-                    i++;
-                }
             }
+        }
 
+        private void updatelista()
+        {
             if (lista.Count > 0)
             {
                 richTextBox1.Text = "";
-                foreach (Hamburguesa h in lista)
+                foreach (IComida h in lista)
                 {
                     richTextBox1.Text += h.ToString() + "\n";
                 }
@@ -160,277 +489,14 @@ namespace BuilderHamburguesas
             label2.Text = "$" + total.ToString();
         }
 
-        private void PictureBox2_Click(object sender, EventArgs e)
+        private void PictureBox10_Click(object sender, EventArgs e)
         {
-            pedido[1] = !pedido[1];
-            if (pedido[1])
-            {
-                hamburguesa = chef.PrepararHamburguesa(new MexBurger(CarneEnum.Res, PanEnum.Maíz));
-                lista.Add(hamburguesa);
-                total += hamburguesa.Costo;
-            }
-            else
-            {
-                int i = 0;
-                foreach (Hamburguesa h in lista)
-                {
-                    if (h.Nombre == "MexBurger")
-                    {
-                        lista.RemoveAt(i);
-                        total -= h.Costo;
-                        break;
-                    }
-                    i++;
-                }
-            }
-
-            if (lista.Count > 0)
-            {
-                richTextBox1.Text = "";
-                foreach (Hamburguesa h in lista)
-                {
-                    richTextBox1.Text += h.ToString() + "\n";
-                }
-            }
-            else
-                richTextBox1.Text = "";
-
-            label2.Text = "$" + total.ToString();
-        }
-
-        private void PictureBox3_Click(object sender, EventArgs e)
-        {
-            pedido[2] = !pedido[2];
-            if (pedido[2])
-            {
-                hamburguesa = chef.PrepararHamburguesa(new QuesosBurger(CarneEnum.Ternera, PanEnum.Crujiente));
-                lista.Add(hamburguesa);
-                total += hamburguesa.Costo;
-            }
-            else
-            {
-                int i = 0;
-                foreach (Hamburguesa h in lista)
-                {
-                    if (h.Nombre == "QuesosBurger")
-                    {
-                        total -= h.Costo;
-                        lista.RemoveAt(i);
-                        break;
-                    }
-                    i++;
-                }
-            }
-
-            if (lista.Count > 0)
-            {
-                richTextBox1.Text = "";
-                foreach (Hamburguesa h in lista)
-                {
-                    richTextBox1.Text += h.ToString() + "\n";
-                }
-            }
-            else
-                richTextBox1.Text = "";
-
-            label2.Text = "$" + total.ToString();
 
         }
 
-        private void PictureBox8_Click(object sender, EventArgs e)
+        private void PictureBox12_Click(object sender, EventArgs e)
         {
-            pedido[7] = !pedido[7];
-            if (pedido[7])
-            {
-                hamburguesa = chef.PrepararHamburguesa(new FancyBurger(CarneEnum.Pavo, PanEnum.Trigo));
-                lista.Add(hamburguesa);
-                total += hamburguesa.Costo;
-            }
-            else
-            {
-                int i = 0;
-                foreach (Hamburguesa h in lista)
-                {
-                    if (h.Nombre == "FancyBurger")
-                    {
-                        total -= h.Costo;
-                        lista.RemoveAt(i);
-                        break;
-                    }
-                    i++;
-                }
-            }
 
-            if (lista.Count > 0)
-            {
-                richTextBox1.Text = "";
-                foreach (Hamburguesa h in lista)
-                {
-                    richTextBox1.Text += h.ToString() + "\n";
-                }
-            }
-            else
-                richTextBox1.Text = "";
-
-            label2.Text = "$" + total.ToString();
-        }
-
-        private void PictureBox4_Click(object sender, EventArgs e)
-        {
-            pedido[3] = !pedido[3];
-            if (pedido[3])
-            {
-                hamburguesa = chef.PrepararHamburguesa(new HawaiiBurger(CarneEnum.Puerco, PanEnum.Espalta));
-                lista.Add(hamburguesa);
-                total += hamburguesa.Costo;
-            }
-            else
-            {
-                int i = 0;
-                foreach (Hamburguesa h in lista)
-                {
-                    if (h.Nombre == "HawaiiBurger")
-                    {
-                        total -= h.Costo;
-                        lista.RemoveAt(i);
-                        break;
-                    }
-                    i++;
-                }
-            }
-
-            if (lista.Count > 0)
-            {
-                richTextBox1.Text = "";
-                foreach (Hamburguesa h in lista)
-                {
-                    richTextBox1.Text += h.ToString() + "\n";
-                }
-            }
-            else
-                richTextBox1.Text = "";
-
-            label2.Text = "$" + total.ToString();
-        }
-
-        private void PictureBox7_Click(object sender, EventArgs e)
-        {
-            pedido[6] = !pedido[6];
-            if (pedido[6])
-            {
-                hamburguesa = chef.PrepararHamburguesa(new EggBurger(CarneEnum.Puerco, PanEnum.Espalta));
-                lista.Add(hamburguesa);
-                total += hamburguesa.Costo;
-            }
-            else
-            {
-                int i = 0;
-                foreach (Hamburguesa h in lista)
-                {
-                    if (h.Nombre == "EggBurger")
-                    {
-                        total -= h.Costo;
-                        lista.RemoveAt(i);
-                        break;
-                    }
-                    i++;
-                }
-            }
-
-            if (lista.Count > 0)
-            {
-                richTextBox1.Text = "";
-                foreach (Hamburguesa h in lista)
-                {
-                    richTextBox1.Text += h.ToString() + "\n";
-                }
-            }
-            else
-                richTextBox1.Text = "";
-
-            label2.Text = "$" + total.ToString();
-        }
-
-        private void PictureBox6_Click(object sender, EventArgs e)
-        {
-            pedido[5] = !pedido[5];
-            if (pedido[5])
-            {
-                hamburguesa = chef.PrepararHamburguesa(new WhiteBurger(CarneEnum.Pollo, PanEnum.Germinado));
-                lista.Add(hamburguesa);
-                total += hamburguesa.Costo;
-            }
-            else
-            {
-                int i = 0;
-                foreach (Hamburguesa h in lista)
-                {
-                    if (h.Nombre == "WhiteBurger")
-                    {
-                        total -= h.Costo;
-                        lista.RemoveAt(i);
-                        break;
-                    }
-                    i++;
-                }
-            }
-
-            if (lista.Count > 0)
-            {
-                richTextBox1.Text = "";
-                foreach (Hamburguesa h in lista)
-                {
-                    richTextBox1.Text += h.ToString() + "\n";
-                }
-            }
-            else
-                richTextBox1.Text = "";
-
-            label2.Text = "$" + total.ToString();
-        }
-
-        private void PictureBox5_Click(object sender, EventArgs e)
-        {
-            pedido[4] = !pedido[4];
-            if (pedido[4])
-            {
-                hamburguesa = chef.PrepararHamburguesa(new SquidBurger(CarneEnum.Pulpo, PanEnum.Crujiente));
-                lista.Add(hamburguesa);
-                total += hamburguesa.Costo;
-            }
-            else
-            {
-                int i = 0;
-                foreach (Hamburguesa h in lista)
-                {
-                    if (h.Nombre == "SquidBurger")
-                    {
-                        total -= h.Costo;
-                        lista.RemoveAt(i);
-                        break;
-                    }
-                    i++;
-                }
-            }
-
-            if (lista.Count > 0)
-            {
-                richTextBox1.Text = "";
-                foreach (Hamburguesa h in lista)
-                {
-                    richTextBox1.Text += h.ToString() + "\n";
-                }
-            }
-            else
-                richTextBox1.Text = "";
-
-            label2.Text = "$" + total.ToString();
-
-        }
-
-        void RTBGotFocus(object sender, System.EventArgs e)
-        {
-            System.Windows.Forms.SendKeys.Send("{tab}");
         }
     }
 }

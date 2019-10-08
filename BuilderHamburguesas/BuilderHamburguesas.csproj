@@ -65,13 +65,26 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Builder\BaguetteAlbondiga.cs" />
+    <Compile Include="Builder\BaguetteBuilder.cs" />
+    <Compile Include="Builder\BaguettePavo.cs" />
+    <Compile Include="Builder\BaguettePollo.cs" />
+    <Compile Include="Builder\BaguettePulpo.cs" />
+    <Compile Include="Builder\BaguetteSubway.cs" />
     <Compile Include="Builder\BurgerBurger.cs" />
     <Compile Include="Builder\EggBurger.cs" />
     <Compile Include="Builder\FancyBurger.cs" />
     <Compile Include="Builder\HamburguesaBuilder.cs" />
     <Compile Include="Builder\HawaiiBurger.cs" />
     <Compile Include="Builder\MexBurger.cs" />
+    <Compile Include="Builder\Platillo.cs" />
     <Compile Include="Builder\QuesosBurger.cs" />
+    <Compile Include="Builder\SandwichBuilder.cs" />
+    <Compile Include="Builder\SandwichMiga.cs" />
+    <Compile Include="Builder\SandwichMilanesa.cs" />
+    <Compile Include="Builder\SandwichPulpo.cs" />
+    <Compile Include="Builder\SandwichRata.cs" />
+    <Compile Include="Builder\SandwichTernera.cs" />
     <Compile Include="Builder\SquidBurger.cs" />
     <Compile Include="Builder\WhiteBurger.cs" />
     <Compile Include="Director\Chef.cs" />
@@ -87,9 +100,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Baguette.cs" />
     <Compile Include="Models\CarneEnum.cs" />
     <Compile Include="Models\Hamburguesa.cs" />
+    <Compile Include="Models\IComida.cs" />
     <Compile Include="Models\PanEnum.cs" />
+    <Compile Include="Models\Sandwich.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -144,6 +160,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\H8.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\B1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\B2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\B3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\B4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\B5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\S1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\S2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\S3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\S4.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\S5.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
